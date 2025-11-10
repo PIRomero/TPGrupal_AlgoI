@@ -1,6 +1,6 @@
 import doctest
 
-def cifrado_cesar(mensaje, clave):
+def cifrar_cesar(mensaje, clave):
     #Cifra el mensaje mensaje desplazando cada caracter la cantidad de espacios indicados por la clave en el alfabeto
     """
     >>> cifrado_cesar("hola", 1)

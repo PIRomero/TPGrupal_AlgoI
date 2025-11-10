@@ -1,7 +1,7 @@
 import doctest
 
-def cifrado_atbash(mensaje):
-    #Cifra el mensaje mensaje asignandole a cada caracter el valor de la letra ubicada en el lado contrario del abecedario y cambiando 
+def cifrar_atbash(mensaje):
+    #Cifra el mensaje mensaje asignandole a cada caracter el valor de la letra ubicada en el lado contrario del abecedario y cambiandolo de mayuscula a minuscula y viceversa 
     """
     >>> cifrado_atbash("hola")
     'SLOZ'
