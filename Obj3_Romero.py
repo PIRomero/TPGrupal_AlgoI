@@ -5,25 +5,25 @@ import doctest
 def cifrar_atbash(mensaje):
     #Cifra el mensaje mensaje asignandole a cada caracter el valor de la letra ubicada en el lado contrario del abecedario y cambiandolo de mayuscula a minuscula y viceversa 
     """
-    >>> cifrado_atbash("hola")
+    >>> cifrar_atbash("hola")
     'SLOZ'
-    >>> cifrado_atbash("HOLA")
+    >>> cifrar_atbash("HOLA")
     'sloz'
-    >>> cifrado_atbash("xyz")
+    >>> cifrar_atbash("xyz")
     'CBA'
-    >>> cifrado_atbash("XYZ")
+    >>> cifrar_atbash("XYZ")
     'cba'
-    >>> cifrado_atbash("Año 2025")
+    >>> cifrar_atbash("Año 2025")
     'zML 7974'
-    >>> cifrado_atbash("ABC")
+    >>> cifrar_atbash("ABC")
     'zyx'
-    >>> cifrado_atbash("abc")
+    >>> cifrar_atbash("abc")
     'ZYX'
-    >>> cifrado_atbash("Python 3.9.0")
+    >>> cifrar_atbash("Python 3.9.0")
     'kBGSLN 6.0.9'
-    >>> cifrado_atbash("Cifrado Atbash")
+    >>> cifrar_atbash("Cifrado Atbash")
     'xRUIZWL zGYZHS'
-    >>> cifrado_atbash("AaZz")
+    >>> cifrar_atbash("AaZz")
     'zZaA'
     """
     minusculas = "abcdefghijklmnñopqrstuvwxyz"
@@ -49,25 +49,25 @@ def cifrar_atbash(mensaje):
 def cifrar_cesar(mensaje, clave):
     #Cifra el mensaje mensaje desplazando cada caracter la cantidad de espacios indicados por la clave en el alfabeto
     """
-    >>> cifrado_cesar("hola", 1)
+    >>> cifrar_cesar("hola", 1)
     'ipmb'
-    >>> cifrado_cesar("HOLA", 1)
+    >>> cifrar_cesar("HOLA", 1)
     'IPMB'
-    >>> cifrado_cesar("xyz", 3)
+    >>> cifrar_cesar("xyz", 3)
     'abc'
-    >>> cifrado_cesar("XYZ", 3)
+    >>> cifrar_cesar("XYZ", 3)
     'ABC'
-    >>> cifrado_cesar("Anno 2025", 5)
+    >>> cifrar_cesar("Anno 2025", 5)
     'Fsst 7570'
-    >>> cifrado_cesar("ABC", -1)
+    >>> cifrar_cesar("ABC", -1)
     'ZAB'
-    >>> cifrado_cesar("abc", -1)
+    >>> cifrar_cesar("abc", -1)
     'zab'
-    >>> cifrado_cesar("Python 3.9.0", 4)
+    >>> cifrar_cesar("Python 3.9.0", 4)
     'Tcxlsr 7.3.4'
-    >>> cifrado_cesar("Cifrado Cesar", 0)
+    >>> cifrar_cesar("Cifrado Cesar", 0)
     'Cifrado Cesar'
-    >>> cifrado_cesar("AaZz", 2)
+    >>> cifrar_cesar("AaZz", 2)
     'CcBb'
     """
 
@@ -90,9 +90,10 @@ def cifrar_cesar(mensaje, clave):
 
     return "".join(resultado)
 
-
+print(doctest.testmod())
 
 def abrir_ventana_principal():
+    #Ventana principal del aplicativo
     ventana_bienvenida.destroy()
 
     ventana = tk.Tk()
@@ -104,7 +105,7 @@ def abrir_ventana_principal():
     entrada_mensaje = tk.Entry(ventana, width=50)
     entrada_mensaje.pack(pady=5)
 
-    tk.Label(ventana, text="Clave (Sólo para César):", font=("Arial", 12)).pack(pady=5)
+    tk.Label(ventana, text="Clave (Solo para Cesar):", font=("Arial", 12)).pack(pady=5)
     entrada_clave = tk.Entry(ventana, width=10)
     entrada_clave.pack(pady=5)
 
@@ -116,7 +117,7 @@ def abrir_ventana_principal():
         try:
             clave = int(entrada_clave.get())
         except:
-            messagebox.showerror("Error", "La clave debe ser un número entero.")
+            messagebox.showerror("Error", "La clave debe ser un numero entero.")
             return
         resultado_label.config(text=cifrar_cesar(mensaje, clave))
 
@@ -125,7 +126,7 @@ def abrir_ventana_principal():
         try:
             clave = int(entrada_clave.get())
         except:
-            messagebox.showerror("Error", "La clave debe ser un número entero.")
+            messagebox.showerror("Error", "La clave debe ser un numero entero.")
             return
         resultado_label.config(text=cifrar_cesar(mensaje, -clave))
 
@@ -137,13 +138,14 @@ def abrir_ventana_principal():
         mensaje = entrada_mensaje.get()
         resultado_label.config(text=cifrar_atbash(mensaje))
 
-    tk.Button(ventana, text="Cifrar César", width=20, command=boton_cifrar_cesar).pack(pady=3)
+    tk.Button(ventana, text="Cifrar Cesar", width=20, command=boton_cifrar_cesar).pack(pady=3)
     tk.Button(ventana, text="Cifrar Atbash", width=20, command=boton_cifrar_atbash).pack(pady=3)
-    tk.Button(ventana, text="Descifrar César", width=20, command=boton_descifrar_cesar).pack(pady=3)
+    tk.Button(ventana, text="Descifrar Cesar", width=20, command=boton_descifrar_cesar).pack(pady=3)
     tk.Button(ventana, text="Descifrar Atbash", width=20, command=boton_descifrar_atbash).pack(pady=3)
 
     ventana.mainloop()
 
+#Instancia de la ventana
 ventana_bienvenida = tk.Tk()
 ventana_bienvenida.title("TP Grupal Parte 1 - Grupo: Romero")
 ventana_bienvenida.geometry("500x350")
@@ -151,14 +153,14 @@ ventana_bienvenida.resizable(False, False)
 
 tk.Label(
     ventana_bienvenida,
-    text="Bienvenido a la aplicación de mensajes secretos del grupo Romero.\n\n"
-         "Para continuar presione continuar, de lo contrario cierre la ventana.",
+    text="Bienvenido a la aplicacion de mensajes secretos del grupo Romero.\n\n"
+         "Para continuar presione continuar.",
     font=("Arial", 12), wraplength=450, justify="center"
 ).pack(pady=20)
 
 tk.Button(ventana_bienvenida, text="Continuar", command=abrir_ventana_principal).pack(pady=10)
 
-tk.Label(ventana_bienvenida, text="Construída por:", font=("Arial", 12)).pack(pady=10)
+tk.Label(ventana_bienvenida, text="Construida por:", font=("Arial", 12)).pack(pady=10)
 tk.Label(ventana_bienvenida, text="Pablo Ivan Romero", font=("Arial", 11)).pack()
 
 ventana_bienvenida.mainloop()
